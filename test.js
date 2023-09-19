@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 app.post("/webhook", (req, res) => {
   const data = req.body;
 
-  console.log(data);
+  console.log(JSON.stringify(data));
 
   res.status(200).json(data);
 });
