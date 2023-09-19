@@ -8,6 +8,8 @@ WORKDIR /app
 COPY test.py .
 
 # RUN pip install -r requirements.txt
+RUN pip install Flask requests
+
 
 # Exponha a porta em que o servidor webhook estará ouvindo
 EXPOSE 8000
