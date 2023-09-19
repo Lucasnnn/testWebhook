@@ -6,6 +6,7 @@ const port = 8000;
 
 app.use((req, res, next) => {
   const contentType = req.headers["content-type"];
+  console.log("entrou");
 
   if (contentType === "application/x-www-form-urlencoded") {
     bodyParser.urlencoded({ extended: true })(req, res, next);
