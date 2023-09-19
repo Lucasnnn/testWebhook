@@ -7,7 +7,7 @@ app = Flask(__name__)
 def webhook():
     data = request.get_json()
 
-    print(jsonify(data))
+    print(data)
     return jsonify(data), 200
 
 
