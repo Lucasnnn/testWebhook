@@ -4,18 +4,8 @@ const bodyParser = require("body-parser");
 const app = express();
 const port = 8000;
 
-app.use((req, res, next) => {
-  const contentType = req.headers["content-type"];
-  console.log("entrou");
-
-  if (contentType === "application/x-www-form-urlencoded") {
-    bodyParser.urlencoded({ extended: true })(req, res, next);
-  } else if (contentType === "application/json") {
-    bodyParser.json()(req, res, next);
-  } else {
-    res.status(400).json({ error: "Tipo de conteúdo não suportado" });
-  }
-});
+// Middleware para analisar o corpo da solicitação como JSON
+app.use(bodyParser.json());
 
 app.post("/webhook", (req, res) => {
   const data = req.body;
