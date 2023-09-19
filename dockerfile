@@ -1,11 +1,11 @@
-FROM python:3.8
+FROM python:3.9-slim
 
 WORKDIR /app
 
-RUN pip install flask
+COPY test.py .
 
-COPY . .
+RUN pip install flask
 
 EXPOSE 8000
 
-CMD ["python", "test.py"]
+CMD ["python", "webhook_test.py"]
