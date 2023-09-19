@@ -8,4 +8,4 @@ RUN pip install flask
 
 EXPOSE 8000
 
-CMD ["python", "webhook_test.py"]
+CMD ["python", "test.py"]
