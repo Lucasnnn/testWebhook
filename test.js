@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const app = express();
 const port = 8000;
 
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post("/webhook/twillio", (req, res) => {
   const origin = req.headers;
@@ -17,6 +17,8 @@ app.post("/webhook/twillio", (req, res) => {
 
   res.status(200).json({ origin, formData });
 });
+
+app.use(bodyParser.json());
 
 app.post("/webhook", (req, res) => {
   const data = req.body;
