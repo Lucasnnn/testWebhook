@@ -7,20 +7,20 @@ const port = 8000;
 app.use(bodyParser.json());
 
 app.post("/webhook/twillio", (req, res) => {
-  const origin = req.headers.referer || "Origem desconhecida";
+  const origin = req.headers;
 
   const formData = req.body;
 
-  console.log("Origem:", origin);
-  console.log("Dados do Formulário:", formData);
-  console.log("--------------------------------------------------------");
+  console.log("header:", origin);
+  console.log(formData);
+  console.log("---twillio----------------------------------------------");
 
   res.status(200).json({ origin, formData });
 });
 
 app.post("/webhook", (req, res) => {
   const data = req.body;
-  const origin = req.headers.referer || "Origem desconhecida";
+  const origin = req.headers;
 
   console.log("Origem:", origin);
   console.log(JSON.stringify(data));
