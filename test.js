@@ -7,11 +7,8 @@ const port = 8000;
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.post("/webhook/twillio", (req, res) => {
-  const origin = req.headers;
-
   const formData = req.body;
 
-  console.log("header:", origin);
   console.log(formData);
   console.log("---twillio----------------------------------------------");
 
@@ -22,9 +19,7 @@ app.use(bodyParser.json());
 
 app.post("/webhook", (req, res) => {
   const data = req.body;
-  const origin = req.headers;
 
-  console.log("Origem:", origin);
   console.log(JSON.stringify(data));
   console.log("--------------------------------------------------------");
 
