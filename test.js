@@ -1,29 +1,26 @@
 const express = require("express");
-const bodyParser = require("body-parser");
+const axios = require("axios");
 
 const app = express();
-const port = 8000;
+const port = 3000;
 
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
 
-app.post("/webhook/twillio", (req, res) => {
-  const formData = req.body;
+app.post("/webhook", async (req, res) => {
+  try {
+    const data = req.body;
 
-  console.log(formData);
-  console.log("---twillio----------------------------------------------");
+    const apiUrl = "http://zap.plug.farm/webhook/bip/status";
 
-  res.status(200).json({ origin, formData });
-});
+    const response = await axios.post(apiUrl, data);
 
-app.use(bodyParser.json());
+    console.log("Resposta da outra API:", response.data);
 
-app.post("/webhook", (req, res) => {
-  const data = req.body;
-
-  console.log(JSON.stringify(data));
-  console.log("--------------------------------------------------------");
-
-  res.status(200).json(data);
+    res.status(200).json(response.data);
+  } catch (error) {
+    console.error("Erro ao fazer a requisição à outra API:", error);
+    res.status(500).json({ error: "Erro interno do servidor" });
+  }
 });
 
 app.listen(port, () => {
