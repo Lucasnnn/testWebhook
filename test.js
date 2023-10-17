@@ -10,7 +10,7 @@ app.post("/webhook", async (req, res) => {
   try {
     const data = req.body;
 
-    console.log(data);
+    console.log(JSON.stringfy(data));
 
     // const apiUrl = "http://zap.plug.farm/webhook/bip/status";
 
