@@ -10,13 +10,15 @@ app.post("/webhook", async (req, res) => {
   try {
     const data = req.body;
 
-    const apiUrl = "http://zap.plug.farm/webhook/bip/status";
+    console.log(data);
 
-    const response = await axios.post(apiUrl, data);
+    // const apiUrl = "http://zap.plug.farm/webhook/bip/status";
 
-    console.log("Resposta da outra API:", response.data);
+    // const response = await axios.post(apiUrl, data);
 
-    res.status(200).json(response.data);
+    // console.log("Resposta da outra API:", response.data);
+
+    // res.status(200).json(response.data);
   } catch (error) {
     console.error("Erro ao fazer a requisição à outra API:", error);
     res.status(500).json({ error: "Erro interno do servidor" });
